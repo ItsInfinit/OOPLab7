@@ -75,9 +75,9 @@ namespace InfOOPLab7
         {
             try
             {
-                blank frm = (blank)this.ActiveMdiChild;
-                frm.Paste();
-            }
+            blank frm = (blank)this.ActiveMdiChild;
+            frm.Paste();
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -88,9 +88,9 @@ namespace InfOOPLab7
         {
             try
             {
-                blank frm = (blank)this.ActiveMdiChild;
-                frm.Cut();
-            }
+            blank frm = (blank)this.ActiveMdiChild;
+            frm.Cut();
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -101,9 +101,9 @@ namespace InfOOPLab7
         {
             try
             {
-                blank frm = (blank)this.ActiveMdiChild;
-                frm.Copy();
-            }
+            blank frm = (blank)this.ActiveMdiChild;
+            frm.Copy();
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -114,9 +114,9 @@ namespace InfOOPLab7
         {
             try
             {
-                blank frm = (blank)this.ActiveMdiChild;
-                frm.Paste();
-            }
+            blank frm = (blank)this.ActiveMdiChild;
+            frm.Paste();
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -127,9 +127,9 @@ namespace InfOOPLab7
         {
             try
             {
-                blank frm = (blank)this.ActiveMdiChild;
-                frm.Delete();
-            }
+            blank frm = (blank)this.ActiveMdiChild;
+            frm.Delete();
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -140,9 +140,9 @@ namespace InfOOPLab7
         {
             try
             {
-                blank frm = (blank)this.ActiveMdiChild;
-                frm.SelectAll();
-            }
+            blank frm = (blank)this.ActiveMdiChild;
+            frm.SelectAll();
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -281,6 +281,16 @@ namespace InfOOPLab7
             frm.Show();
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            FindForm frm = new FindForm();
+            if (frm.ShowDialog(this) == DialogResult.Cancel) return;
+            blank form = (blank)this.ActiveMdiChild;
+            form.MdiParent = this;
+            int start = form.richTextBox1.SelectionStart;
+            form.richTextBox1.Find(frm.FindText, start, frm.FindCondition);
+        }
+
         private void arrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(MdiLayout.ArrangeIcons);
@@ -320,7 +330,7 @@ namespace InfOOPLab7
                 form.richTextBox1.Find(frm.FindText, start, frm.FindCondition);
             }
             catch (Exception ex)
-            {
+        {
                 MessageBox.Show(ex.Message);
             }
         }
